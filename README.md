@@ -1,56 +1,35 @@
-# Black Myth: Wukong Benchmark Automation
-
-C# console application for launching Black Myth: Wukong Benchmark Tool
-and running CPU-oriented and GPU-oriented benchmark passes.
-
-## Requirements
-
+Автоматизация бенчмарка Black Myth: Wukong
+Консольное приложение на C#, предназначенное для запуска Black Myth: Wukong Benchmark Tool и выполнения двух проходов бенчмарка: CPU-oriented и GPU-oriented.
+Требования
 - Windows 10/11
 - Visual Studio 2022
 - .NET 8
 - Steam
 - Black Myth: Wukong Benchmark Tool
-
-## How to run
-
-1. Open the solution in Visual Studio.
-2. Make sure the path to `b1_benchmark.exe` in `Program.cs` is correct.
-3. Press `Ctrl + F5`.
-4. Follow the instructions in the console.
-
-## CPU-oriented pass
-
-Settings:
-
-- Resolution: 1280×720
-- Quality: Low
-- Ray Tracing: Off
-- Frame Generation: Off
-- Upscaling: Off
-- VSync: Off
-
-The goal is to reduce GPU rendering cost and make CPU
-performance more influential on the benchmark result.
-
-## GPU-oriented pass
-
-Settings:
-
-- Resolution: 1920×1080
-- Quality: Cinematic
-- Ray Tracing: On
-- Frame Generation: Off
-- Upscaling: Off
-- VSync: Off
-
-The goal is to increase the GPU rendering workload.
-
-Frame Generation is disabled in both passes because generated
-frames would distort the interpretation of the rendering
-performance.
-
-## Project structure
-
-The project is intentionally implemented as a lightweight
-C# console application. The benchmark executable is launched
-directly using `System.Diagnostics.Process`.
+Как запустить
+1. Открыть решение в Visual Studio 2022.
+2. Убедиться, что путь к b1_benchmark.exe в файле Program.cs указан правильно.
+3. Запустить проект с помощью Ctrl + F5.
+4. Следовать инструкциям, отображаемым в консоли.
+CPU-oriented проход
+Используются следующие настройки:
+- Разрешение: 1280×720
+- Качество графики: Low
+- Ray Tracing: выключен
+- Frame Generation: выключен
+- Upscaling: выключен
+- VSync: выключен
+Цель этих настроек — снизить нагрузку на GPU и сделать производительность CPU более значимой для результата бенчмарка.
+GPU-oriented проход
+Используются следующие настройки:
+- Разрешение: 1920×1080
+- Качество графики: Cinematic
+- Ray Tracing: включен
+- Frame Generation: выключен
+- Upscaling: выключен
+- VSync: выключен
+Цель этих настроек — максимально увеличить нагрузку на GPU во время прохождения бенчмарка.
+Frame Generation отключён в обоих проходах, поскольку генерируемые кадры могут искусственно увеличивать отображаемый FPS и затруднять оценку реальной производительности рендеринга.
+Структура проекта
+Проект намеренно реализован как лёгкое консольное приложение на C#. Запуск Benchmark Tool выполняется непосредственно из программы с использованием класса System.Diagnostics.Process.
+Это позволяет автоматически запускать Benchmark Tool из C# и последовательно выполнять два предусмотренных сценария тестирования.
